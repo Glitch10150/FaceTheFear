@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(23, 100%, 50%);
+  --primary-foreground: hsl(0, 0%, 0%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+  
+  /* Custom GTA-style colors */
+  --gta-orange: hsl(23, 100%, 50%);
+  --gta-gold: hsl(51, 100%, 50%);
+  --dark-surface: hsl(0, 0%, 10%);
+  --dark-bg: hsl(0, 0%, 4%);
+}
+
+.dark {
+  --background: hsl(0, 0%, 4%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(0, 0%, 10%);
+  --muted-foreground: hsl(0, 0%, 64.9%);
+  --popover: hsl(0, 0%, 4%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(0, 0%, 4%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(0, 0%, 15%);
+  --input: hsl(0, 0%, 15%);
+  --primary: hsl(23, 100%, 50%);
+  --primary-foreground: hsl(0, 0%, 0%);
+  --secondary: hsl(0, 0%, 10%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(0, 0%, 10%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(0, 0%, 83.9%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased text-foreground;
+    background: var(--dark-bg);
+    color: hsl(0, 0%, 98%);
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  .gta-header {
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background: linear-gradient(45deg, var(--gta-orange), var(--gta-gold), var(--gta-orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px hsla(23, 100%, 50%, 0.5);
+    animation: pulse 2s ease-in-out infinite alternate;
+  }
+  
+  .gta-button {
+    background: linear-gradient(45deg, var(--gta-orange), hsl(23, 100%, 60%));
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: hsl(0, 0%, 0%);
+    font-family: 'Orbitron', monospace;
+  }
+  
+  .gta-button:hover {
+    background: linear-gradient(45deg, hsl(23, 100%, 60%), var(--gta-gold));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px hsla(23, 100%, 50%, 0.4);
+  }
+  
+  .form-input {
+    background: hsla(0, 0%, 10%, 0.8);
+    border: 2px solid hsl(0, 0%, 20%);
+    transition: all 0.3s ease;
+    color: hsl(0, 0%, 98%);
+  }
+  
+  .form-input:focus {
+    border-color: var(--gta-orange);
+    box-shadow: 0 0 0 3px hsla(23, 100%, 50%, 0.1);
+    background: hsl(0, 0%, 10%);
+  }
+  
+  .faction-card {
+    background: linear-gradient(135deg, hsla(0, 0%, 10%, 0.9), hsla(0, 0%, 16%, 0.9));
+    border: 1px solid hsla(23, 100%, 50%, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .faction-card:hover {
+    border-color: hsla(23, 100%, 50%, 0.5);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px hsla(23, 100%, 50%, 0.1);
+  }
+  
+  .status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .status-pending {
+    background: hsla(45, 100%, 50%, 0.2);
+    color: hsl(45, 100%, 50%);
+    border: 1px solid hsl(45, 100%, 50%);
+  }
+  
+  .status-approved {
+    background: hsla(134, 61%, 41%, 0.2);
+    color: hsl(134, 61%, 41%);
+    border: 1px solid hsl(134, 61%, 41%);
+  }
+  
+  .status-rejected {
+    background: hsla(354, 70%, 54%, 0.2);
+    color: hsl(354, 70%, 54%);
+    border: 1px solid hsl(354, 70%, 54%);
+  }
+}
+
+@keyframes pulse {
+  0% { filter: brightness(1); }
+  100% { filter: brightness(1.2); }
+}
